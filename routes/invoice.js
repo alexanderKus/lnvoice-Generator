@@ -2,12 +2,13 @@ const express = require("express")
 const ejs = require("ejs")
 const puppeteer = require('puppeteer');
 const path = require('path');
+const Invoice = require('../models/invoice.model')
 
 const router = express.Router()
 
 router.post('/', async (req, res) => {
     try {
-        const data = { name: req.body.firstName }
+        const data = new Invoice(new Date())
         const templatePath = path.join(__dirname, '../views/invoice.ejs');
         const html = await ejs.renderFile(templatePath, data)
 
