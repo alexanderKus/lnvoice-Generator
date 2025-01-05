@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.post('/', async (req, res) => {
     try {
-        const data = { name: "aleksander" }
+        const data = { name: req.body.firstName }
         const templatePath = path.join(__dirname, '../views/invoice.ejs');
         const html = await ejs.renderFile(templatePath, data)
 
