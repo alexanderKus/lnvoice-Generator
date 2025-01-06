@@ -4,9 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Generator</title>
+    <style>
+        .containers {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
     <h1>PDF FILE</h1>
-    <%= locals.invoiceNumber || "Jhon" %>
+    <div class="invoice">
+        <div class="invoice-header">
+            <div class="invoice-number">
+                Fakura numer: <%= locals.invoiceNumber || 'no.0' %>
+            </div>
+            <div class="issue-date"> 
+                Data wystawienia: <%= locals.issueDate || new Date() %>
+            </div>
+            <div class="sales-date">
+                Data sprzedaży: <%= locals.salesDate || new Date() %>
+            </div>
+            <div class="due-date">
+                Termin płatności: <%= locals.dueDate || new Date() %>
+            </div>
+            <div class="payment">
+                Płatność: <%= locals.payment || new Date() %>
+            </div>
+        </div>
+        <hr>
+        <div class="info">
+            <div class="seller">
+                <div class="field">
+                    Dane firmy: <%= locals.seller.companyInfo || '' %>
+                </div>
+                <div class="field">
+                    NIP/VAT: <%= locals.seller.nipVat || '' %>
+                </div>
+                <div class="field">
+                    Konto: <%= locals.seller.account || '' %>
+                </div>
+                <div class="field">
+                    Bank: <%= locals.seller.bankName || '' %>
+                </div>
+                <div class="field">
+                    SWIFT: <%= locals.seller.swift || '' %>
+                </div>
+            </div>
+            <div class="buyer">
+                <div class="field">
+                    Dane firmy: <%= locals.buyer.companyInfo || '' %>
+                </div>
+                <div class="field">
+                    NIP/VAT: <%= locals.buyer.nipVat || '' %>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

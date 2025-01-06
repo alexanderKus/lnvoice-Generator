@@ -9,12 +9,80 @@
 <body>
     <div class="containers">
         <h1>Basic Incoive Generator</h1>
-        <form action="/invoice" method="post">
-            <label>First Name
-                <input type="text" name="firstName" />
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+        <div class="invoice">
+            <form action="/invoice" method="post">
+                <div class="invoice-header">
+                    <div class="invoice-number">
+                        <label>Fakura numer:
+                            <input type="date" name="invoiceNumber" />
+                        </label>
+                    </div>
+                    <div class="issue-date"> 
+                        <label>Data wystawienia:
+                            <input type="date" name="issueDate" />
+                        </label>
+                    </div>
+                    <div class="sales-date">
+                        <label>Data sprzedaży: 
+                            <input type="date" name="salesDate" />
+                        </label>
+                    </div>
+                    <div class="due-date">
+                        <label>Termin płatności: 
+                            <input type="date" name="dueDate" />
+                        </label>
+                    </div>
+                    <div class="payment">
+                        <label>Płatność: 
+                            <input type="text" name="payment" />
+                        </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="info">
+                    <div class="seller">
+                        <div class="field">
+                            <label>Dane firmy: 
+                                <textarea name="sellerCompanyInfo" rows="4" cols="50" ></textarea>
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label>NIP/VAT: 
+                                <input type="text" name="sellerNipVat" />
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label>Konto: 
+                                <input type="text" name="sellerAccount" />
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label>Bank: 
+                                <input type="text" name="sellerBankName" />
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label>SWIFT: 
+                                <input type="text" name="sellerSwift" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="buyer">
+                        <div class="field">
+                            <label>Dane firmy: 
+                                <textarea name="buyerCompanyInfo" rows="4" cols="50" ></textarea>
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label>NIP/VAT: 
+                                <input type="text" name="buyerNipVat" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
