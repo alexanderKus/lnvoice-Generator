@@ -10,24 +10,7 @@ const router = express.Router()
 
 router.post('/', async (req, res) => {
     try {
-        const data = new Invoice(
-            req.body.invoiceNumber,
-            req.body.issueDate,
-            req.body.salesDate,
-            req.body.dueDate,
-            req.body.payment,
-            new Seller(
-                req.body.sellerCompanyInfo,
-                req.body.sellerNipVat,
-                req.body.sellerAccount,
-                req.body.sellerBankName,
-                req.body.sellerSwift
-            ),
-            new Buyer(
-                req.body.buyerCompanyInfo,
-                req.body.buyerNipVat
-            )
-        )
+        const data = createInvoice(req)
         const templatePath = path.join(__dirname, '../views/invoice.ejs');
         const html = await ejs.renderFile(templatePath, data)
 
@@ -47,5 +30,26 @@ router.post('/', async (req, res) => {
         res.status(500).send('Error generating PDF');
     }
 })
+
+const createInvoice = (req) => {
+    return new Invoice(
+        req.body.invoiceNumber,
+        req.body.issueDate,
+        req.body.salesDate,
+        req.body.dueDate,
+        req.body.payment,
+        new Seller(
+            req.body.sellerCompanyInfo,
+            req.body.sellerNipVat,
+            req.body.sellerAccount,
+            req.body.sellerBankName,
+            req.body.sellerSwift
+        ),
+        new Buyer(
+            req.body.buyerCompanyInfo,
+            req.body.buyerNipVat
+        )
+    )
+}
 
 module.exports = router
