@@ -30,7 +30,6 @@ router.post('/', async (req, res) => {
         )
         const templatePath = path.join(__dirname, '../views/invoice.ejs');
         const html = await ejs.renderFile(templatePath, data)
-        console.log(html)
 
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
