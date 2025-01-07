@@ -9,3 +9,15 @@
     flex-direction: row;
     align-items: center;
 }
+
+tbody > td:first-of-type {
+    text-align: left;
+}
+
+tfoot th {
+    text-align: right;
+}
+
+tfoot td {
+    font-weight: boldl;
+}
