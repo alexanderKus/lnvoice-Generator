@@ -6,7 +6,8 @@ class Invoice {
         dueDate, 
         payment,
         seller,
-        buyer
+        buyer,
+        item
     ) {
         this.invoiceNumber = invoiceNumber
         this.issueDate = issueDate
@@ -15,6 +16,7 @@ class Invoice {
         this.payment = payment
         this.seller = seller
         this.buyer = buyer
+        this.item = item
     }
 }
 

@@ -48,6 +48,14 @@ const createInvoice = (req) => {
         new Buyer(
             req.body.buyerCompanyInfo,
             req.body.buyerNipVat
+        ),
+        new Item(
+            req.body.quantity,
+            req.body.netPrice,
+            req.body.totalNet,
+            req.body.vat,
+            req.body.vatAmount,
+            req.body.totalGross
         )
     )
 }
