@@ -15,6 +15,18 @@
             flex-direction: row;
             align-items: center;
         }
+
+        tbody > td:first-of-type {
+            text-align: left;
+        }
+
+        tfoot th {
+            text-align: right;
+        }
+
+        tfoot td {
+            font-weight: boldl;
+        }
     </style>
 </head>
 <body>
@@ -65,6 +77,46 @@
                 </div>
             </div>
         </div>
+        <table id="invoice-table">
+            <thead>
+                <tr>
+                    <th scope="col">LP</th>
+                    <th scope="col">Nazwa towaru</th>
+                    <th scope="col">Ilość</th>
+                    <th scope="col">Cenna netto</th>
+                    <th scope="col">Wartość nett</th>
+                    <th scope="col">VAT</th>
+                    <th scope="col">Wartość VAT</th>
+                    <th scope="col">Wartość brutto</th>
+                </tr>
+            </thead>
+            <tbody id="invoice-table-tbody">
+                <tr>
+                    <th scope="row"> 1 </th>
+                    <td> <%= locals.item.item || '' %> </td>
+                    <td> <%= locals.item.quantity || '' %> </td>
+                    <td> <%= locals.item.netPrice || '' %> </td>
+                    <td> <%= locals.item.totalNet || '' %> </td>
+                    <td> <%= locals.item.vat || '' %> </td>
+                    <td> <%= locals.item.vatAmount || '' %> </td>
+                    <td> <%= locals.item.totalGross || '' %> </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="row" colspan="5">W tym</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row" colspan="5">Razem</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 </body>
 </html>
