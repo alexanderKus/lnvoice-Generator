@@ -26,6 +26,7 @@ function addItem(row) {
     let cell = row.insertCell(1);
     let input = document.createElement("input");
     input.type = "text";
+    input.name = "item"
     input.className = "item"
     cell.appendChild(input);
 }

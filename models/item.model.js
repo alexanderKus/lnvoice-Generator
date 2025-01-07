@@ -1,5 +1,6 @@
 class Item {
     constructor(
+        item,
         quantity, 
         netPrice, 
         totalNet, 
@@ -7,6 +8,7 @@ class Item {
         vatAmount, 
         totalGross
     ) {
+        this.item = item
         this.quantity = quantity
         this.netPrice = netPrice
         this.totalNet = totalNet

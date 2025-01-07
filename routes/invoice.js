@@ -5,6 +5,7 @@ const path = require('path');
 const Invoice = require('../models/invoice.model');
 const Seller = require("../models/seller.model");
 const Buyer = require("../models/buyer.model");
+const Item = require("../models/item.model");
 
 const router = express.Router()
 
@@ -50,6 +51,7 @@ const createInvoice = (req) => {
             req.body.buyerNipVat
         ),
         new Item(
+            req.body.item,
             req.body.quantity,
             req.body.netPrice,
             req.body.totalNet,
