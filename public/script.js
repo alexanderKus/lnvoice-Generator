@@ -117,6 +117,11 @@ function addTotalGross(row) {
 }
 
 function calculate(row) {
+    calculateRow(row)
+    calculateTotal()
+}
+
+function calculateRow(row) {
     const quantity = row.cells[2]?.getElementsByClassName("quantity")[0]?.value || null
     const vat = row.cells[5]?.getElementsByClassName("vat-selector")[0]?.value || null
     const netPrinceCell = row.cells[3].getElementsByClassName("net-price")[0]
@@ -131,8 +136,27 @@ function calculate(row) {
     const v = Number(vat)
     const np = Number(netPrinceCell.value)
     totalNetCell.value = np * q
-    vatAmountCell.value = ((np * (1 + v)) * q) - (np * q)
-    totalGrossCell.value = (np * (1 + v)) * q
+    vatAmountCell.value = (((np * (1 + v)) * q) - (np * q)).toFixed(2)
+    totalGrossCell.value = ((np * (1 + v)) * q).toFixed(2)
+}
+
+function calculateTotal() {
+    const table = document.getElementById("invoice-table-tbody")    
+    const footer = document.getElementById("invoice-table-tfoot")    
+    let ttn = 0
+    let tva = 0
+    let ttg = 0
+    for (let i = 0; i < table.rows.length; i++) {
+        ttn += Number(table.rows[i].cells[4].getElementsByClassName("total-net")[0].value)
+        tva += Number(table.rows[i].cells[6].getElementsByClassName("vat-amount")[0].value)
+        ttg += Number(table.rows[i].cells[7].getElementsByClassName("total-gross")[0].value)
+    }
+    const totalTotalNet = footer.rows[1].cells[1]
+    const totalVatAmount = footer.rows[1].cells[3]
+    const totalTotalGross = footer.rows[1].cells[4]
+    totalTotalNet.innerHTML = ttn
+    totalVatAmount.innerHTML = tva
+    totalTotalGross.innerHTML = ttg
 }
 
 addRow()
