@@ -41,7 +41,7 @@ function addQty(row) {
     input.value = 1
     input.name = "quantity"
     input.className = "quantity"
-    input.addEventListener("input", () => calculateNetValues(row));
+    input.addEventListener("input", () => calculate(row));
     cell.appendChild(input);
 }
 
@@ -55,7 +55,7 @@ function addNetPrice(row) {
     input.value = 0
     input.name = "netPrice"
     input.className = "net-price"
-    input.addEventListener("input", () => calculateNetValues(row));
+    input.addEventListener("input", () => calculate(row));
     cell.appendChild(input);
 }
 
@@ -85,7 +85,7 @@ function addVat(row) {
     option23.text = "23"
     select.appendChild(optionNP)
     select.appendChild(option23)
-    select.addEventListener("click", () => calculateNetValues(row));
+    select.addEventListener("click", () => calculate(row));
     cell.appendChild(select);
 }
 
@@ -112,11 +112,11 @@ function addTotalGross(row) {
     input.value = 0
     input.name = "totalGross"
     input.className = "total-gross"
-    input.addEventListener("input", () => calculateNetValues(row));
+    input.addEventListener("input", () => calculate(row));
     cell.appendChild(input);
 }
 
-function calculateNetValues(row) {
+function calculate(row) {
     const quantity = row.cells[2]?.getElementsByClassName("quantity")[0]?.value || null
     const vat = row.cells[5]?.getElementsByClassName("vat-selector")[0]?.value || null
     const netPrinceCell = row.cells[3].getElementsByClassName("net-price")[0]
