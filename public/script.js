@@ -1,5 +1,5 @@
 function addRow() {
-    let table = document.getElementById('invoice-table-tbody')    
+    let table = document.getElementById("invoice-table-tbody")    
     const tableLength = table.rows.length
     let newRow = table.insertRow(tableLength)
 
