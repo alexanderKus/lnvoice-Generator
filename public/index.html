@@ -14,27 +14,27 @@
                 <div class="invoice-header">
                     <div class="invoice-number">
                         <label>Fakura numer:
-                            <input type="date" name="invoiceNumber" />
+                            <input type="date" name="general[invoiceNumber]" />
                         </label>
                     </div>
                     <div class="issue-date"> 
                         <label>Data wystawienia:
-                            <input type="date" name="issueDate" />
+                            <input type="date" name="general[issueDate]" />
                         </label>
                     </div>
                     <div class="sales-date">
                         <label>Data sprzedaży: 
-                            <input type="date" name="salesDate" />
+                            <input type="date" name="general[salesDate]" />
                         </label>
                     </div>
                     <div class="due-date">
                         <label>Termin płatności: 
-                            <input type="date" name="dueDate" />
+                            <input type="date" name="general[dueDate]" />
                         </label>
                     </div>
                     <div class="payment">
                         <label>Płatność: 
-                            <input type="text" name="payment" />
+                            <input type="text" name="general[payment]" />
                         </label>
                     </div>
                 </div>
@@ -43,39 +43,39 @@
                     <div class="seller">
                         <div class="field">
                             <label>Dane firmy: 
-                                <textarea name="sellerCompanyInfo" rows="4" cols="40" ></textarea>
+                                <textarea name="seller[companyInfo]" rows="4" cols="40" ></textarea>
                             </label>
                         </div>
                         <div class="field">
                             <label>NIP/VAT: 
-                                <input type="text" name="sellerNipVat" />
+                                <input type="text" name="seller[nipVat]" />
                             </label>
                         </div>
                         <div class="field">
                             <label>Konto: 
-                                <input type="text" name="sellerAccount" />
+                                <input type="text" name="seller[account]" />
                             </label>
                         </div>
                         <div class="field">
                             <label>Bank: 
-                                <input type="text" name="sellerBankName" />
+                                <input type="text" name="seller[bankName] />
                             </label>
                         </div>
                         <div class="field">
                             <label>SWIFT: 
-                                <input type="text" name="sellerSwift" />
+                                <input type="text" name="seller[swift]" />
                             </label>
                         </div>
                     </div>
                     <div class="buyer">
                         <div class="field">
                             <label>Dane firmy: 
-                                <textarea name="buyerCompanyInfo" rows="4" cols="40" ></textarea>
+                                <textarea name="buyer[companyInfo]" rows="4" cols="40" ></textarea>
                             </label>
                         </div>
                         <div class="field">
                             <label>NIP/VAT: 
-                                <input type="text" name="buyerNipVat" />
+                                <input type="text" name="buyer[nipVat]" />
                             </label>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                             <td id="total-total-net" name="totalTotalNet">0</td>
                             <td></td>
                             <td id="total-vat-amount" name="totalVatAmount">0</td>
-                            <td id="total-total-gross" name="totalTolatGross">0</td>
+                            <td id="total-total-gross" name="totalTolalGross">0</td>
                         </tr>
                     </tfoot>
                 </table>

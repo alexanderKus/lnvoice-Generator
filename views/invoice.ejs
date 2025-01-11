@@ -34,19 +34,19 @@
     <div class="invoice">
         <div class="invoice-header">
             <div class="invoice-number">
-                Fakura numer: <%= locals.invoiceNumber || 'no.0' %>
+                Fakura numer: <%= locals.general.invoiceNumber || 'no.0' %>
             </div>
             <div class="issue-date"> 
-                Data wystawienia: <%= locals.issueDate || new Date() %>
+                Data wystawienia: <%= locals.general.issueDate || new Date() %>
             </div>
             <div class="sales-date">
-                Data sprzedaży: <%= locals.salesDate || new Date() %>
+                Data sprzedaży: <%= locals.general.salesDate || new Date() %>
             </div>
             <div class="due-date">
-                Termin płatności: <%= locals.dueDate || new Date() %>
+                Termin płatności: <%= locals.general.dueDate || new Date() %>
             </div>
             <div class="payment">
-                Płatność: <%= locals.payment || new Date() %>
+                Płatność: <%= locals.general.payment || new Date() %>
             </div>
         </div>
         <hr>
@@ -91,16 +91,18 @@
                 </tr>
             </thead>
             <tbody id="invoice-table-tbody">
-                <tr>
-                    <th scope="row"> 1 </th>
-                    <td> <%= locals.item.item || '' %> </td>
-                    <td> <%= locals.item.quantity || '' %> </td>
-                    <td> <%= locals.item.netPrice || '' %> </td>
-                    <td> <%= locals.item.totalNet || '' %> </td>
-                    <td> <%= locals.item.vat || '' %> </td>
-                    <td> <%= locals.item.vatAmount || '' %> </td>
-                    <td> <%= locals.item.totalGross || '' %> </td>
-                </tr>
+                <% for (let i = 0; i < locals.items.length; i++) { %>
+                    <tr>
+                        <th scope="row"> <%= i+1 %> </th>
+                        <td> <%= locals.items[i].item || '' %> </td>
+                        <td> <%= locals.items[i].quantity || '' %> </td>
+                        <td> <%= locals.items[i].netPrice || '' %> </td>
+                        <td> <%= locals.items[i].totalNet || '' %> </td>
+                        <td> <%= locals.items[i].vat || '' %> </td>
+                        <td> <%= locals.items[i].vatAmount || '' %> </td>
+                        <td> <%= locals.items[i].totalGross || '' %> </td>
+                    </tr>
+                <% } %>
             </tbody>
             <tfoot>
                 <tr>

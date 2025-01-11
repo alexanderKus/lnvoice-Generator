@@ -1,22 +1,14 @@
 class Invoice {
     constructor(
-        invoiceNumber, 
-        issueDate, 
-        salesDate, 
-        dueDate, 
-        payment,
+        general,
         seller,
         buyer,
-        item
+        items
     ) {
-        this.invoiceNumber = invoiceNumber
-        this.issueDate = issueDate
-        this.salesDate = salesDate
-        this.dueDate = dueDate
-        this.payment = payment
+        this.general = general
         this.seller = seller
         this.buyer = buyer
-        this.item = item
+        this.items = items
     }
 }
 

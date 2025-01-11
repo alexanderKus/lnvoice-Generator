@@ -6,12 +6,14 @@ const Invoice = require('../models/invoice.model');
 const Seller = require("../models/seller.model");
 const Buyer = require("../models/buyer.model");
 const Item = require("../models/item.model");
+const General = require("../models/general.model")
 
 const router = express.Router()
 
 router.post('/', async (req, res) => {
     try {
-        const data = createInvoice(req)
+        const data = createInvoice(req.body)
+        console.log(data)
         const templatePath = path.join(__dirname, '../views/invoice.ejs');
         const html = await ejs.renderFile(templatePath, data)
 
@@ -32,33 +34,36 @@ router.post('/', async (req, res) => {
     }
 })
 
-const createInvoice = (req) => {
+const createInvoice = (body) => {
+    const items = body.items.map(el => new Item(
+        el.item,
+        el.quantity, 
+        el.netPrice, 
+        el.totalNet, 
+        el.vat, 
+        el.vatAmount, 
+        el.totalGross
+    ))
     return new Invoice(
-        req.body.invoiceNumber,
-        req.body.issueDate,
-        req.body.salesDate,
-        req.body.dueDate,
-        req.body.payment,
+        new General(
+            body.general.invoiceNumber,
+            body.general.issueDate,
+            body.general.salesDate,
+            body.general.dueDate,
+            body.general.payment,
+        ),
         new Seller(
-            req.body.sellerCompanyInfo,
-            req.body.sellerNipVat,
-            req.body.sellerAccount,
-            req.body.sellerBankName,
-            req.body.sellerSwift
+            body.seller.companyInfo,
+            body.seller.nipVat,
+            body.seller.account,
+            body.seller.bankName,
+            body.seller.swift
         ),
         new Buyer(
-            req.body.buyerCompanyInfo,
-            req.body.buyerNipVat
+            body.buyer.companyInfo,
+            body.buyer.vipVat
         ),
-        new Item(
-            req.body.item,
-            req.body.quantity,
-            req.body.netPrice,
-            req.body.totalNet,
-            req.body.vat,
-            req.body.vatAmount,
-            req.body.totalGross
-        )
+        items
     )
 }
 

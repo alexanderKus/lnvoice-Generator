@@ -1,3 +1,5 @@
+let itemsCount = 0
+
 function addRow() {
     let table = document.getElementById("invoice-table-tbody")    
     const tableLength = table.rows.length
@@ -11,6 +13,8 @@ function addRow() {
     addVat(newRow)
     addVatAmount(newRow)
     addTotalGross(newRow)
+
+    itemsCount++
 }
 
 function addNo(row, no) {
@@ -26,7 +30,7 @@ function addItem(row) {
     let cell = row.insertCell(1);
     let input = document.createElement("input");
     input.type = "text";
-    input.name = "item"
+    input.name = `items[${itemsCount}][item]`
     input.className = "item"
     cell.appendChild(input);
 }
@@ -39,7 +43,7 @@ function addQty(row) {
     input.max = 9999999999
     input.step = 1
     input.value = 1
-    input.name = "quantity"
+    input.name = `items[${itemsCount}][quantity]`
     input.className = "quantity"
     input.addEventListener("input", () => calculate(row));
     cell.appendChild(input);
@@ -53,7 +57,7 @@ function addNetPrice(row) {
     input.max = 9999999999
     input.step = 0.01
     input.value = 0
-    input.name = "netPrice"
+    input.name = `items[${itemsCount}][netPrice]`
     input.className = "net-price"
     input.addEventListener("input", () => calculate(row));
     cell.appendChild(input);
@@ -67,7 +71,7 @@ function addTotalNet(row) {
     input.max = 9999999999
     input.step = 0.01
     input.value = 0
-    input.name = "totalNet"
+    input.name = `items[${itemsCount}][totalNet]`
     input.className = "total-net"
     cell.appendChild(input);
 }
@@ -77,7 +81,7 @@ function addVat(row) {
     let select = document.createElement("select");
     let optionNP = document.createElement("option")
     let option23 = document.createElement("option")
-    select.name = "vat"
+    select.name = `items[${itemsCount}][vat]`
     select.className = "vat-selector"
     optionNP.value = 0
     optionNP.text = "NP"
@@ -98,6 +102,7 @@ function addVatAmount(row) {
     input.step = 0.01
     input.value = 0
     input.name = "vatAmount"
+    input.name = `items[${itemsCount}][vatAmount]`
     input.className = "vat-amount"
     cell.appendChild(input);
 }
@@ -111,6 +116,7 @@ function addTotalGross(row) {
     input.step = 0.01
     input.value = 0
     input.name = "totalGross"
+    input.name = `items[${itemsCount}][totalGross]`
     input.className = "total-gross"
     input.addEventListener("input", () => calculate(row));
     cell.appendChild(input);
