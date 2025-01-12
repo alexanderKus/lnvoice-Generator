@@ -30,7 +30,6 @@
     </style>
 </head>
 <body>
-    <h1>PDF FILE</h1>
     <div class="invoice">
         <div class="invoice-header">
             <div class="invoice-number">
@@ -113,12 +112,23 @@
                 </tr>
                 <tr>
                     <th scope="row" colspan="5">Razem</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td> <%= locals.summary.totalNetPrice || '' %> </td>
+                    <td> <%= locals.summary.vatAmount || '' %></td>
+                    <td> <%= locals.summary.totalGrossPrice || '' %></td>
                 </tr>
             </tfoot>
         </table>
+        <div class="summary">
+            <div>Wartosc netto <%= locals.summary.totalNetPrice || '' %> </div>
+            <div>Wartosc VAT <%= locals.summary.vatAmount || '' %> </div>
+            <div>Wartosc brutto <%= locals.summary.totalGrossPrice || '' %> </div>
+        </div>
+        <div class="notes">
+            <div>Uwagi: <%= locals.notes || '' %> </div>
+        </div>
+        <div class="total-due">
+            <div>Do zaplaty: <%= locals.totalDue || '' %> </div>
+        </div>
     </div>
 </body>
 </html>

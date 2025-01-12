@@ -3,12 +3,18 @@ class Invoice {
         general,
         seller,
         buyer,
-        items
+        items,
+        summary,
+        notes,
+        totalDue
     ) {
         this.general = general
         this.seller = seller
         this.buyer = buyer
         this.items = items
+        this.summary = summary
+        this.notes = notes
+        this.totalDue = totalDue
     }
 }
 

@@ -7,6 +7,7 @@ const Seller = require("../models/seller.model");
 const Buyer = require("../models/buyer.model");
 const Item = require("../models/item.model");
 const General = require("../models/general.model")
+const Summary = require("../models/summary.model")
 
 const router = express.Router()
 
@@ -63,7 +64,14 @@ const createInvoice = (body) => {
             body.buyer.companyInfo,
             body.buyer.vipVat
         ),
-        items
+        items,
+        new Summary(
+            body.summary.totalNetPrice,
+            body.summary.vatAmount,
+            body.summary.totalGrossPrice
+        ),
+        body.notes,
+        body.totalDue
     )
 }
 
