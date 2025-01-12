@@ -1,5 +1,5 @@
-const addItemBtn = document.getElementById("add-item-btn")
-addItemBtn.addEventListener("click", () => addRow())
+document.getElementById("add-item-btn").addEventListener("click", () => addRow())
+document.getElementById("currency").addEventListener("change", () => updateSummary())
 
 let itemsCount = 0
 
@@ -168,6 +168,24 @@ function calculateTotal() {
     totalTotalNet.innerHTML = ttn.toFixed(2)
     totalVatAmount.innerHTML = tva.toFixed(2)
     totalTotalGross.innerHTML = ttg.toFixed(2)
+
+    updateSummary(ttn, tva, ttg)
+}
+
+function updateSummary(ttn, tva, ttg) {
+    if (!ttn || !tva || !ttg) {
+        const footer = document.getElementById("invoice-table-tfoot")    
+        ttn = footer.rows[1].cells[1].innerHTML
+        tva = footer.rows[1].cells[3].innerHTML
+        ttg = footer.rows[1].cells[4].innerHTML
+    }
+    const currency = document.getElementById("currency")
+    const summaryTotalNetPrice = document.getElementById("summary-total-net-price")
+    const summaryVatAmount = document.getElementById("summary-vat-amount")
+    const summaryTotalGrossPrice = document.getElementById("summary-total-gross-price")
+    summaryTotalNetPrice.innerHTML = `${ttn} ${currency.value}`
+    summaryVatAmount.innerHTML = `${tva} ${currency.value}`
+    summaryTotalGrossPrice.innerHTML = `${ttg} ${currency.value}`
 }
 
 addRow()

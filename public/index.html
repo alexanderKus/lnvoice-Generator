@@ -111,6 +111,29 @@
                         </tr>
                     </tfoot>
                 </table>
+                <div class="summary">
+                    <div>Wartosc netto <span id="summary-total-net-price"></span></div>
+                    <div>Wartosc VAT <span id="summary-vat-amount"></span></div>
+                    <div>Wartosc brutto <span id="summary-total-gross-price"></span></div>
+                </div>
+                <div class="currency">
+                    <label>Waluta:
+                        <select name="currency" id="currency">
+                            <option value="PLN">PLN</option>
+                            <option value="USD">USD</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="notes">
+                    <label>Uwagi:
+                        <input type="text" name="notes" />
+                    </label>
+                </div>
+                <div class="total-due">
+                    <label>Do zaplaty
+                        <input type="text" name="totalDue" readonly>
+                    </label>
+                </div>
                 <button type="button" id="add-item-btn">Add item</button>
                 <button type="submit">Submit</button>
             </form>
