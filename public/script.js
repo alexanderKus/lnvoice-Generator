@@ -184,9 +184,9 @@ function updateSummary(ttn, tva, ttg) {
     const summaryVatAmount = document.getElementById("summary-vat-amount")
     const summaryTotalGrossPrice = document.getElementById("summary-total-gross-price")
     const summaryTotalDue = document.getElementById("total-due")
-    summaryTotalNetPrice.innerHTML = `${ttn} ${currency.value}`
-    summaryVatAmount.innerHTML = `${tva} ${currency.value}`
-    summaryTotalGrossPrice.innerHTML = `${ttg} ${currency.value}`
+    summaryTotalNetPrice.value = `${ttn} ${currency.value}`
+    summaryVatAmount.value = `${tva} ${currency.value}`
+    summaryTotalGrossPrice.value = `${ttg} ${currency.value}`
     if (ttg <= 0) { 
         summaryTotalDue.value = ""
         return 

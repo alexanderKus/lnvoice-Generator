@@ -112,9 +112,15 @@
                     </tfoot>
                 </table>
                 <div class="summary">
-                    <div>Wartosc netto <span id="summary-total-net-price"></span></div>
-                    <div>Wartosc VAT <span id="summary-vat-amount"></span></div>
-                    <div>Wartosc brutto <span id="summary-total-gross-price"></span></div>
+                    <label>Wartosc netto 
+                        <input type="text" name="summary[totalNetPrice]" id="summary-total-net-price" readonly />
+                    </label>
+                    <label>Wartosc VAT 
+                        <input type="text" name="summary[vatAmount]" id="summary-vat-amount" readonly />
+                    </label>
+                    <label>Wartosc brutto 
+                        <input type="text" name="summary[totalGrossPrice]" id="summary-total-gross-price" readolny />
+                    </label>
                 </div>
                 <div class="currency">
                     <label>Waluta:

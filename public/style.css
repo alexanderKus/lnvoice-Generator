@@ -10,6 +10,11 @@
     align-items: center;
 }
 
+.summary {
+    display: flex;
+    flex-direction: column;
+}
+
 tbody > td:first-of-type {
     text-align: left;
 }
