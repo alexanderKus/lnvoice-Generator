@@ -183,9 +183,42 @@ function updateSummary(ttn, tva, ttg) {
     const summaryTotalNetPrice = document.getElementById("summary-total-net-price")
     const summaryVatAmount = document.getElementById("summary-vat-amount")
     const summaryTotalGrossPrice = document.getElementById("summary-total-gross-price")
+    const summaryTotalDue = document.getElementById("total-due")
     summaryTotalNetPrice.innerHTML = `${ttn} ${currency.value}`
     summaryVatAmount.innerHTML = `${tva} ${currency.value}`
     summaryTotalGrossPrice.innerHTML = `${ttg} ${currency.value}`
+    if (ttg <= 0) { 
+        summaryTotalDue.value = ""
+        return 
+    }
+    ttgParts = String(ttg).split(".")
+    summaryTotalDue.value = `${translate(Number(ttgParts[0]))} ${currency.value} ${translate(Number(ttgParts[1]))} groszy`
+}
+
+function translate(n) {
+    single_digit = ['zero', 'jeden', 'dwa', 'trzy', 'cztery', 'pięć', 'sześć', 'siedem', 'osiem', 'dziewięć']
+    double_digit = ['dziesięć', 'jedenaście', 'dwanaście', 'trzynaście', 'czternaście', 'piętnaście', 'szesnaście', 'siedemnaście', 'osiemnaście', 'dziewiętnaście']
+    below_hundred = ['dwadzieścia', 'trzydzieści', 'czterdzieści', 'pięćdziesiąt', 'sześćdziesiąt', 'siedemdziesiąt', 'osiemdziesiąt', 'dziewięćdziesiąt']
+
+    let word = "";
+    if (n < 10) {
+        word = single_digit[n] + ' '
+    } else if (n < 20) {
+        word = double_digit[n - 10] + ' '
+    } else if (n < 100) {
+        let rem = translate(n % 10)
+        word = below_hundred[(n - n % 10) / 10 - 2] + ' ' + rem
+    } else if (n < 1000) {
+        word = single_digit[Math.trunc(n / 100)] + ' sto ' + translate(n % 100)
+    } else if (n < 1000000) {
+        word = translate(parseInt(n / 1000)).trim() + ' tysiac ' + translate(n % 1000)
+    } else if (n < 1000000000) {
+        word = translate(parseInt(n / 1000000)).trim() + ' milion ' + translate(n % 1000000)
+    } else {
+        word = translate(parseInt(n / 1000000000)).trim() + ' miliard ' + translate(n % 1000000000)
+    }
+    return word;
 }
 
 addRow()
+updateSummary()
