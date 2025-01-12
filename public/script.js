@@ -76,6 +76,7 @@ function addTotalNet(row) {
     input.value = 0
     input.name = `items[${itemsCount}][totalNet]`
     input.className = "total-net"
+    input.readOnly = true
     cell.appendChild(input);
 }
 
@@ -107,6 +108,7 @@ function addVatAmount(row) {
     input.name = "vatAmount"
     input.name = `items[${itemsCount}][vatAmount]`
     input.className = "vat-amount"
+    input.readOnly = true
     cell.appendChild(input);
 }
 
@@ -121,6 +123,7 @@ function addTotalGross(row) {
     input.name = "totalGross"
     input.name = `items[${itemsCount}][totalGross]`
     input.className = "total-gross"
+    input.readOnly = true
     input.addEventListener("input", () => calculate(row));
     cell.appendChild(input);
 }
