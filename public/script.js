@@ -166,9 +166,9 @@ function calculateTotal() {
     const totalTotalNet = footer.rows[1].cells[1]
     const totalVatAmount = footer.rows[1].cells[3]
     const totalTotalGross = footer.rows[1].cells[4]
-    totalTotalNet.innerHTML = ttn
-    totalVatAmount.innerHTML = tva
-    totalTotalGross.innerHTML = ttg
+    totalTotalNet.innerHTML = ttn.toFixed(2)
+    totalVatAmount.innerHTML = tva.toFixed(2)
+    totalTotalGross.innerHTML = ttg.toFixed(2)
 }
 
 addRow()
