@@ -134,14 +134,13 @@ function calculate(row) {
 }
 
 function calculateRow(row) {
-    const quantity = row.cells[2]?.getElementsByClassName("quantity")[0]?.value || null
-    const vat = row.cells[5]?.getElementsByClassName("vat-selector")[0]?.value || null
+    const quantity = row.cells[2]?.getElementsByClassName("quantity")[0]?.value
+    const vat = row.cells[5]?.getElementsByClassName("vat-selector")[0]?.value
     const netPrinceCell = row.cells[3].getElementsByClassName("net-price")[0]
     const totalNetCell = row.cells[4].getElementsByClassName("total-net")[0]
     const vatAmountCell = row.cells[6].getElementsByClassName("vat-amount")[0]
     const totalGrossCell = row.cells[7].getElementsByClassName("total-gross")[0]
-    if (quantity == null || vat == null || netPrinceCell == null || 
-        totalNetCell == null || totalGrossCell == null || vatAmountCell == null) { 
+    if (!quantity || !vat || !netPrinceCell || !totalNetCell || !totalGrossCell || !vatAmountCell ) { 
         return 
     }
     const q = Number(quantity)
