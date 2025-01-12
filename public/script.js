@@ -1,3 +1,6 @@
+const addItemBtn = document.getElementById("add-item-btn")
+addItemBtn.addEventListener("click", () => addRow())
+
 let itemsCount = 0
 
 function addRow() {
