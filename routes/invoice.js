@@ -1,13 +1,17 @@
-const express = require("express")
-const ejs = require("ejs")
-const puppeteer = require('puppeteer');
-const path = require('path');
-const Invoice = require('../models/invoice.model');
-const Seller = require("../models/seller.model");
-const Buyer = require("../models/buyer.model");
-const Item = require("../models/item.model");
-const General = require("../models/general.model")
-const Summary = require("../models/summary.model")
+import express from "express"
+import ejs from "ejs"
+import puppeteer from "puppeteer"
+import path from "path"
+import { fileURLToPath } from 'url'
+import { Invoice } from "../models/invoice.model.js"
+import { Seller } from "../models/seller.model.js"
+import { Buyer } from "../models/buyer.model.js"
+import { Item } from "../models/item.model.js"
+import { General } from "../models/general.model.js"
+import { Summary } from "../models/summary.model.js"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const router = express.Router()
 
@@ -74,4 +78,5 @@ const createInvoice = (body) => {
     )
 }
 
-module.exports = router
+export default router
+//module.exports = router

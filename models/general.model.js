@@ -1,4 +1,4 @@
-class General {
+export class General {
     constructor(
         invoiceNumber, 
         issueDate, 
@@ -13,5 +13,3 @@ class General {
         this.payment = payment
     }
 }
-
-module.exports = General

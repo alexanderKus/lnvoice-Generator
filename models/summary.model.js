@@ -1,4 +1,4 @@
-class Summary {
+export class Summary {
     constructor(
         totalNetPrice,
         vatAmount,
@@ -9,5 +9,3 @@ class Summary {
         this.totalGrossPrice = totalGrossPrice
     }
 }
-
-module.exports = Summary

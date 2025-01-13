@@ -1,4 +1,4 @@
-class Invoice {
+export class Invoice {
     constructor(
         general,
         seller,
@@ -17,5 +17,3 @@ class Invoice {
         this.totalDue = totalDue
     }
 }
-
-module.exports = Invoice

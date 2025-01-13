@@ -1,4 +1,4 @@
-class Item {
+export class Item {
     constructor(
         item,
         quantity, 
@@ -17,5 +17,3 @@ class Item {
         this.totalGross = totalGross
     }
 }
-
-module.exports = Item
