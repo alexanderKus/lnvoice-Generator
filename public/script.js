@@ -191,14 +191,14 @@ function updateSummary(ttn, tva, ttg) {
         summaryTotalDue.value = ""
         return 
     }
-    ttgParts = String(ttg).split(".")
+    const ttgParts = String(ttg).split(".")
     summaryTotalDue.value = `${translate(Number(ttgParts[0]))} ${currency.value} ${translate(Number(ttgParts[1]))} groszy`
 }
 
 function translate(n) {
-    single_digit = ['zero', 'jeden', 'dwa', 'trzy', 'cztery', 'pięć', 'sześć', 'siedem', 'osiem', 'dziewięć']
-    double_digit = ['dziesięć', 'jedenaście', 'dwanaście', 'trzynaście', 'czternaście', 'piętnaście', 'szesnaście', 'siedemnaście', 'osiemnaście', 'dziewiętnaście']
-    below_hundred = ['dwadzieścia', 'trzydzieści', 'czterdzieści', 'pięćdziesiąt', 'sześćdziesiąt', 'siedemdziesiąt', 'osiemdziesiąt', 'dziewięćdziesiąt']
+    const single_digit = ['zero', 'jeden', 'dwa', 'trzy', 'cztery', 'pięć', 'sześć', 'siedem', 'osiem', 'dziewięć']
+    const double_digit = ['dziesięć', 'jedenaście', 'dwanaście', 'trzynaście', 'czternaście', 'piętnaście', 'szesnaście', 'siedemnaście', 'osiemnaście', 'dziewiętnaście']
+    const below_hundred = ['dwadzieścia', 'trzydzieści', 'czterdzieści', 'pięćdziesiąt', 'sześćdziesiąt', 'siedemdziesiąt', 'osiemdziesiąt', 'dziewięćdziesiąt']
 
     let word = "";
     if (n < 10) {
