@@ -106,14 +106,16 @@
             <tfoot>
                 <tr>
                     <th scope="row" colspan="5">W tym</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td> <%= locals.summary.totalNetPrice || '' %> </td>
+                    <td> <%= locals.summary.vatAmount || '' %></td>
+                    <td> <%= locals.items[locals.items.length-1].vat === "0" ? "NP" : "23%" %> </td>
+                    <td> <%= locals.summary.totalGrossPrice || '' %></td>
                 </tr>
                 <tr>
                     <th scope="row" colspan="5">Razem</th>
                     <td> <%= locals.summary.totalNetPrice || '' %> </td>
                     <td> <%= locals.summary.vatAmount || '' %></td>
+                    <td></td>
                     <td> <%= locals.summary.totalGrossPrice || '' %></td>
                 </tr>
             </tfoot>

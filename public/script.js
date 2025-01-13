@@ -90,7 +90,7 @@ function addVat(row) {
     optionNP.value = 0
     optionNP.text = "NP"
     option23.value = 0.23
-    option23.text = "23"
+    option23.text = "23%"
     select.appendChild(optionNP)
     select.appendChild(option23)
     select.addEventListener("click", () => calculate(row));
@@ -154,6 +154,7 @@ function calculateRow(row) {
 function calculateTotal() {
     const table = document.getElementById("invoice-table-tbody")    
     const footer = document.getElementById("invoice-table-tfoot")    
+    const chosenVatOption = table.rows[table.rows.length-1].cells[5].getElementsByClassName("vat-selector")[0].value
     let ttn = 0
     let tva = 0
     let ttg = 0
@@ -165,9 +166,17 @@ function calculateTotal() {
     const totalTotalNet = footer.rows[1].cells[1]
     const totalVatAmount = footer.rows[1].cells[3]
     const totalTotalGross = footer.rows[1].cells[4]
+    const inTotalNet = footer.rows[0].cells[1]
+    const inVatAmount = footer.rows[0].cells[3]
+    const inTotalGross = footer.rows[0].cells[4]
+    const inVat = footer.rows[0].cells[2]
     totalTotalNet.innerHTML = ttn.toFixed(2)
     totalVatAmount.innerHTML = tva.toFixed(2)
     totalTotalGross.innerHTML = ttg.toFixed(2)
+    inTotalNet.innerHTML = ttn.toFixed(2)
+    inVat.innerHTML = chosenVatOption === "0" ? "NP" : "23%"
+    inVatAmount.innerHTML = tva.toFixed(2)
+    inTotalGross.innerHTML = ttg.toFixed(2)
 
     updateSummary(ttn, tva, ttg)
 }
