@@ -220,7 +220,7 @@ function translate(n) {
     } else if (n < 1000) {
         word = single_digit[Math.trunc(n / 100)] + ' sto ' + translate(n % 100)
     } else if (n < 1000000) {
-        word = translate(parseInt(n / 1000)).trim() + ' tysiac ' + translate(n % 1000)
+        word = translate(parseInt(n / 1000)).trim() + ' tysiąc ' + translate(n % 1000)
     } else if (n < 1000000000) {
         word = translate(parseInt(n / 1000000)).trim() + ' milion ' + translate(n % 1000000)
     } else {
