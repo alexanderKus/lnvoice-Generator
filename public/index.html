@@ -112,34 +112,36 @@
                         </tr>
                     </tfoot>
                 </table>
-                <div class="f-col">
-                    <label>Wartość netto 
-                        <input type="text" name="summary[totalNetPrice]" id="summary-total-net-price" readonly />
-                    </label>
-                    <label>Wartość VAT 
-                        <input type="text" name="summary[vatAmount]" id="summary-vat-amount" readonly />
-                    </label>
-                    <label>Wartość brutto 
-                        <input type="text" name="summary[totalGrossPrice]" id="summary-total-gross-price" readolny />
-                    </label>
-                </div>
-                <div class="currency">
-                    <label>Waluta:
-                        <select name="currency" id="currency">
-                            <option value="PLN">PLN</option>
-                            <option value="USD">USD</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="notes">
-                    <label>Uwagi:
-                        <input type="text" name="notes" />
-                    </label>
-                </div>
-                <div class="total-due">
-                    <label>Do zapłaty
-                        <input type="text" name="totalDue" id="total-due" readonly>
-                    </label>
+                <div class="summary">
+                    <div class="f-col">
+                        <label>Wartość netto 
+                            <input type="text" name="summary[totalNetPrice]" id="summary-total-net-price" readonly />
+                        </label>
+                        <label>Wartość VAT 
+                            <input type="text" name="summary[vatAmount]" id="summary-vat-amount" readonly />
+                        </label>
+                        <label>Wartość brutto 
+                            <input type="text" name="summary[totalGrossPrice]" id="summary-total-gross-price" readolny />
+                        </label>
+                    </div>
+                    <div class="currency">
+                        <label>Waluta:
+                            <select name="currency" id="currency">
+                                <option value="PLN">PLN</option>
+                                <option value="USD">USD</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="notes">
+                        <label>Uwagi:
+                            <input type="text" name="notes" />
+                        </label>
+                    </div>
+                    <div class="total-due">
+                        <label>Do zapłaty
+                            <input type="text" name="totalDue" id="total-due" readonly>
+                        </label>
+                    </div>
                 </div>
                 <button type="button" id="add-item-btn">Dodaj</button>
                 <button type="submit">Dalej</button>

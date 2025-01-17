@@ -88,3 +88,34 @@ tfoot td {
 .side textarea {
   width: 300px;
 }
+
+.summary {
+  align-items: flex-start;
+  gap: 5px;
+  width: 50%;
+  padding-top: 1rem;
+}
+
+.summary > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.summary label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.summary input {
+  width: 120px;
+}
+
+#total-due {
+  width: 500px;
+}
+
+.summary select {
+  width: 120px;
+}
