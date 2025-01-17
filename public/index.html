@@ -11,7 +11,7 @@
         <h1>Basic Incoive Generator</h1>
         <div class="invoice">
             <form action="/invoice" method="post">
-                <div class="invoice-header">
+                <div class="f-col invoice-header">
                     <div class="invoice-number">
                         <label>Fakura numer:
                             <input type="date" name="general[invoiceNumber]" />
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="info">
+                <div class="f-row">
                     <div class="seller">
                         <div class="field">
                             <label>Dane firmy: 
@@ -112,7 +112,7 @@
                         </tr>
                     </tfoot>
                 </table>
-                <div class="summary">
+                <div class="f-col">
                     <label>Wartość netto 
                         <input type="text" name="summary[totalNetPrice]" id="summary-total-net-price" readonly />
                     </label>
