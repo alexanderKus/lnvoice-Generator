@@ -40,6 +40,39 @@ body {
   width: 120px;
 }
 
+.sides {
+  width: 100%;
+}
+
+.side {
+  width: 100%;
+  gap: 5px;
+}
+
+.side-rp {
+    padding-right: 1rem;
+}
+
+.side > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.side label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.side input {
+  width: 300px;
+}
+
+.side textarea {
+  width: 300px;
+}
+
 tbody > td:first-of-type {
   text-align: left;
 }
