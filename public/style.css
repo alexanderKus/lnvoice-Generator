@@ -2,6 +2,22 @@ body {
   font-family: monospace;
 }
 
+tbody > td:first-of-type {
+  text-align: left;
+}
+
+tfoot th {
+  text-align: right;
+}
+
+tfoot td {
+  font-weight: bold;
+}
+
+#invoice-table {
+  padding-top: 1rem;
+}
+
 .f-row {
   display: flex;
   flex-direction: row;
@@ -71,16 +87,4 @@ body {
 
 .side textarea {
   width: 300px;
-}
-
-tbody > td:first-of-type {
-  text-align: left;
-}
-
-tfoot th {
-  text-align: right;
-}
-
-tfoot td {
-  font-weight: bold;
 }
