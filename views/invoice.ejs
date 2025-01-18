@@ -11,6 +11,11 @@
         tbody {
             width: 100%;
         }
+        tbody td {
+            text-align: right;
+            overflow-wrap: break-word;
+            max-width: 300px;
+        }
         tbody > td:first-of-type {
             text-align: left;
         }
@@ -20,6 +25,7 @@
 
         tfoot td {
             font-weight: bold;
+            text-align: right;
         }
         .f-row {
             display: flex;
@@ -32,6 +38,14 @@
         .tp {
             padding-top: 1rem;
         }
+        .l {
+            align-items: last baseline;
+        }
+        .s {
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+        }
         .containers {
             display: flex;
             flex-direction: column;
@@ -40,20 +54,11 @@
         .invoice-header {
             align-items: flex-start;
             gap: 5px;
-            width: 30%;
+            width: 50%;
         }
-        .invoice-header > div {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-        .invoice-header label {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-        .invoice-header input {
-            width: 120px;
+        .field{
+            overflow-wrap: break-word;
+            max-width: 400px;
         }
         .sides {
             width: 100%;
@@ -65,140 +70,118 @@
         .side-rp {
             padding-right: 1rem;
         }
-        .side > div {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-        .side label {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-        .side input {
-            width: 300px;
-        }
-        .side textarea {
-            width: 300px;
-        }
         .summary {
-            align-items: flex-start;
-            gap: 5px;
-            width: 50%;
-        }
-        .summary > div {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
         }
     </style>
 </head>
 <body>
-    <div class="invoice">
-        <div class="f-col invoice-header">
-            <div class="invoice-number">
-                Fakura numer: <%= locals.general.invoiceNumber || 'no.0' %>
-            </div>
-            <div class="issue-date"> 
-                Data wystawienia: <%= locals.general.issueDate || new Date() %>
-            </div>
-            <div class="sales-date">
-                Data sprzedaży: <%= locals.general.salesDate || new Date() %>
-            </div>
-            <div class="due-date">
-                Termin płatności: <%= locals.general.dueDate || new Date() %>
-            </div>
-            <div class="payment">
-                Płatność: <%= locals.general.payment || new Date() %>
-            </div>
-        </div>
-        <hr>
-        <div class="f-row sides">
-            <div class="f-col side side-rp">
-                <div class="field">
-                    Dane firmy: <%= locals.seller.companyInfo || '' %>
+    <div class="containers">
+        <div class="invoice">
+            <div class="f-col invoice-header">
+                <div class="invoice-number">
+                    Fakura numer: <%= locals.general.invoiceNumber || 'no.0' %>
                 </div>
-                <div class="field">
-                    NIP/VAT: <%= locals.seller.nipVat || '' %>
+                <div class="issue-date"> 
+                    Data wystawienia: <%= locals.general.issueDate || new Date() %>
                 </div>
-                <div class="field">
-                    Konto: <%= locals.seller.account || '' %>
+                <div class="sales-date">
+                    Data sprzedaży: <%= locals.general.salesDate || new Date() %>
                 </div>
-                <div class="field">
-                    Bank: <%= locals.seller.bankName || '' %>
+                <div class="due-date">
+                    Termin płatności: <%= locals.general.dueDate || new Date() %>
                 </div>
-                <div class="field">
-                    SWIFT: <%= locals.seller.swift || '' %>
+                <div class="payment">
+                    Płatność: <%= locals.general.payment || new Date() %>
                 </div>
             </div>
-            <div class="f-col side">
-                <div class="field">
-                    Dane firmy: <%= locals.buyer.companyInfo || '' %>
+            <hr>
+            <div class="f-row sides">
+                <div class="f-col side side-rp">
+                    <div class="field">
+                        Dane firmy: <%= locals.seller.companyInfo || '' %>
+                    </div>
+                    <div class="field">
+                        NIP/VAT: <%= locals.seller.nipVat || '' %>
+                    </div>
+                    <div class="field">
+                        Konto: <%= locals.seller.account || '' %>
+                    </div>
+                    <div class="field">
+                        Bank: <%= locals.seller.bankName || '' %>
+                    </div>
+                    <div class="field">
+                        SWIFT: <%= locals.seller.swift || '' %>
+                    </div>
                 </div>
-                <div class="field">
-                    NIP/VAT: <%= locals.buyer.nipVat || '' %>
+                <div class="f-col side">
+                    <div class="field">
+                        Dane firmy: <%= locals.buyer.companyInfo || '' %>
+                    </div>
+                    <div class="field">
+                        NIP/VAT: <%= locals.buyer.nipVat || '' %>
+                    </div>
                 </div>
             </div>
-        </div>
-        <table id="invoice-table" class="tp">
-            <thead>
-                <tr>
-                    <th scope="col">LP</th>
-                    <th scope="col">Nazwa towaru</th>
-                    <th scope="col">Ilość</th>
-                    <th scope="col">Cenna netto</th>
-                    <th scope="col">Wartość nett</th>
-                    <th scope="col">VAT</th>
-                    <th scope="col">Wartość VAT</th>
-                    <th scope="col">Wartość brutto</th>
-                </tr>
-            </thead>
-            <tbody id="invoice-table-tbody">
-                <% for (let i = 0; i < locals.items.length; i++) { %>
+            <table id="invoice-table" class="tp">
+                <thead>
                     <tr>
-                        <th scope="row"> <%= i+1 %> </th>
-                        <td> <%= locals.items[i].item || '' %> </td>
-                        <td> <%= locals.items[i].quantity || '' %> </td>
-                        <td> <%= locals.items[i].netPrice || '' %> </td>
-                        <td> <%= locals.items[i].totalNet || '' %> </td>
-                        <td> <%= locals.items[i].vat || '' %> </td>
-                        <td> <%= locals.items[i].vatAmount || '' %> </td>
-                        <td> <%= locals.items[i].totalGross || '' %> </td>
+                        <th scope="col">LP</th>
+                        <th scope="col">Nazwa towaru</th>
+                        <th scope="col">Ilość</th>
+                        <th scope="col">Cenna netto</th>
+                        <th scope="col">Wartość nett</th>
+                        <th scope="col">VAT</th>
+                        <th scope="col">Wartość VAT</th>
+                        <th scope="col">Wartość brutto</th>
                     </tr>
-                <% } %>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th scope="row" colspan="4">W tym</th>
-                    <td> <%= locals.summary.totalNetPrice || '' %> </td>
-                    <td> <%= locals.summary.vatAmount || '' %></td>
-                    <td> <%= locals.items[locals.items.length-1].vat === "0" ? "NP" : "23%" %> </td>
-                    <td> <%= locals.summary.totalGrossPrice || '' %></td>
-                </tr>
-                <tr>
-                    <th scope="row" colspan="4">Razem</th>
-                    <td> <%= locals.summary.totalNetPrice || '' %> </td>
-                    <td> <%= locals.summary.vatAmount || '' %></td>
-                    <td></td>
-                    <td> <%= locals.summary.totalGrossPrice || '' %></td>
-                </tr>
-            </tfoot>
-        </table>
-        <div class="summary tp">
-            <div class="f-col">
-                <div>Wartość netto <%= locals.summary.totalNetPrice || '' %> </div>
-                <div>Wartość VAT <%= locals.summary.vatAmount || '' %> </div>
-                <div>Wartość brutto <%= locals.summary.totalGrossPrice || '' %> </div>
+                </thead>
+                <tbody id="invoice-table-tbody">
+                    <% for (let i = 0; i < locals.items.length; i++) { %>
+                        <tr>
+                            <th scope="row"> <%= i+1 %> </th>
+                            <td> <%= locals.items[i].item || '' %> </td>
+                            <td> <%= locals.items[i].quantity || '' %> </td>
+                            <td> <%= locals.items[i].netPrice || '' %> </td>
+                            <td> <%= locals.items[i].totalNet || '' %> </td>
+                            <td> <%= locals.items[i].vat || '' %> </td>
+                            <td> <%= locals.items[i].vatAmount || '' %> </td>
+                            <td> <%= locals.items[i].totalGross || '' %> </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row" colspan="4">W tym</th>
+                        <td> <%= locals.summary.totalNetPrice || '' %> </td>
+                        <td> <%= locals.summary.vatAmount || '' %></td>
+                        <td> <%= locals.items[locals.items.length-1].vat === "0" ? "NP" : "23%" %> </td>
+                        <td> <%= locals.summary.totalGrossPrice || '' %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" colspan="4">Razem</th>
+                        <td> <%= locals.summary.totalNetPrice || '' %> </td>
+                        <td> <%= locals.summary.vatAmount || '' %></td>
+                        <td></td>
+                        <td> <%= locals.summary.totalGrossPrice || '' %></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="summary tp">
+                <div class="f-col l">
+                    <div class="s"><span>Wartość netto </span><span> <%= locals.summary.totalNetPrice || '' %> </span></div>
+                    <div class="s"><span>Wartość VAT </span><span> <%= locals.summary.vatAmount || '' %> </span></div>
+                    <div class="s"><span>Wartość brutto </span><span><%= locals.summary.totalGrossPrice || '' %> </span></div>
+                </div>
+                <hr>
+                <div class="notes">
+                    Uwagi: <%= locals.notes || '' %>
+                </div>
+                <hr>
+                <div class="total-due">
+                    Do zapłaty: <%= locals.totalDue || '' %>
+                </div>
+                <hr>
             </div>
-            <hr>
-            <div class="notes">
-                Uwagi: <%= locals.notes || '' %>
-            </div>
-            <hr>
-            <div class="total-due">
-                Do zapłaty: <%= locals.totalDue || '' %>
-            </div>
-            <hr>
         </div>
     </div>
 </body>

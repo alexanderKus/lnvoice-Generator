@@ -18,6 +18,8 @@ const router = express.Router()
 router.post('/', async (req, res) => {
     try {
         const data = createInvoice(req.body)
+        // NOTE: For testing a view uncomment line below
+        //return res.render("invoice", data)
         const templatePath = path.join(__dirname, '../views/invoice.ejs');
         const html = await ejs.renderFile(templatePath, data)
 
