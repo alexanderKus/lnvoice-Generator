@@ -5,33 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Generator</title>
     <style>
-        .containers {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        body {
+            font-family: monospace;
         }
-        .info {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+        tbody {
+            width: 100%;
         }
-
         tbody > td:first-of-type {
             text-align: left;
         }
-
         tfoot th {
             text-align: right;
         }
 
         tfoot td {
-            font-weight: boldl;
+            font-weight: bold;
+        }
+        .f-row {
+            display: flex;
+            flex-direction: row;
+        }
+        .f-col {
+            display: flex;
+            flex-direction: column;
+        }
+        .tp {
+            padding-top: 1rem;
+        }
+        .containers {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .invoice-header {
+            align-items: flex-start;
+            gap: 5px;
+            width: 30%;
+        }
+        .invoice-header > div {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .invoice-header label {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .invoice-header input {
+            width: 120px;
+        }
+        .sides {
+            width: 100%;
+        }
+        .side {
+            width: 100%;
+            gap: 5px;
+        }
+        .side-rp {
+            padding-right: 1rem;
+        }
+        .side > div {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .side label {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .side input {
+            width: 300px;
+        }
+        .side textarea {
+            width: 300px;
+        }
+        .summary {
+            align-items: flex-start;
+            gap: 5px;
+            width: 50%;
+        }
+        .summary > div {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <div class="invoice">
-        <div class="invoice-header">
+        <div class="f-col invoice-header">
             <div class="invoice-number">
                 Fakura numer: <%= locals.general.invoiceNumber || 'no.0' %>
             </div>
@@ -49,8 +113,8 @@
             </div>
         </div>
         <hr>
-        <div class="info">
-            <div class="seller">
+        <div class="f-row sides">
+            <div class="f-col side side-rp">
                 <div class="field">
                     Dane firmy: <%= locals.seller.companyInfo || '' %>
                 </div>
@@ -67,7 +131,7 @@
                     SWIFT: <%= locals.seller.swift || '' %>
                 </div>
             </div>
-            <div class="buyer">
+            <div class="f-col side">
                 <div class="field">
                     Dane firmy: <%= locals.buyer.companyInfo || '' %>
                 </div>
@@ -76,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <table id="invoice-table">
+        <table id="invoice-table" class="tp">
             <thead>
                 <tr>
                     <th scope="col">LP</th>
@@ -105,14 +169,14 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th scope="row" colspan="5">W tym</th>
+                    <th scope="row" colspan="4">W tym</th>
                     <td> <%= locals.summary.totalNetPrice || '' %> </td>
                     <td> <%= locals.summary.vatAmount || '' %></td>
                     <td> <%= locals.items[locals.items.length-1].vat === "0" ? "NP" : "23%" %> </td>
                     <td> <%= locals.summary.totalGrossPrice || '' %></td>
                 </tr>
                 <tr>
-                    <th scope="row" colspan="5">Razem</th>
+                    <th scope="row" colspan="4">Razem</th>
                     <td> <%= locals.summary.totalNetPrice || '' %> </td>
                     <td> <%= locals.summary.vatAmount || '' %></td>
                     <td></td>
@@ -120,20 +184,22 @@
                 </tr>
             </tfoot>
         </table>
-        <div class="summary">
-            <div>Wartość netto <%= locals.summary.totalNetPrice || '' %> </div>
-            <div>Wartość VAT <%= locals.summary.vatAmount || '' %> </div>
-            <div>Wartość brutto <%= locals.summary.totalGrossPrice || '' %> </div>
+        <div class="summary tp">
+            <div class="f-col">
+                <div>Wartość netto <%= locals.summary.totalNetPrice || '' %> </div>
+                <div>Wartość VAT <%= locals.summary.vatAmount || '' %> </div>
+                <div>Wartość brutto <%= locals.summary.totalGrossPrice || '' %> </div>
+            </div>
+            <hr>
+            <div class="notes">
+                Uwagi: <%= locals.notes || '' %>
+            </div>
+            <hr>
+            <div class="total-due">
+                Do zapłaty: <%= locals.totalDue || '' %>
+            </div>
+            <hr>
         </div>
-        <hr>
-        <div class="notes">
-            <div>Uwagi: <%= locals.notes || '' %> </div>
-        </div>
-        <hr>
-        <div class="total-due">
-            <div>Do zapłaty: <%= locals.totalDue || '' %> </div>
-        </div>
-        <hr>
     </div>
 </body>
 </html>
