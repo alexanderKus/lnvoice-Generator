@@ -1,5 +1,5 @@
-FROM node:18
-WORKDIR /app
+FROM ghcr.io/puppeteer/puppeteer
+USER root
 COPY package*.json ./
 RUN npm install
 COPY . .
