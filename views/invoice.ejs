@@ -8,6 +8,12 @@
         body {
             font-family: monospace;
         }
+        h3 {
+            margin: 0;
+        }
+        table {
+            width: 100%;
+        }
         tbody {
             width: 100%;
         }
@@ -70,8 +76,6 @@
         .side-rp {
             padding-right: 1rem;
         }
-        .summary {
-        }
     </style>
 </head>
 <body>
@@ -91,14 +95,15 @@
                     Termin płatności: <%= locals.general.dueDate || new Date() %>
                 </div>
                 <div class="payment">
-                    Płatność: <%= locals.general.payment || new Date() %>
+                    Płatność: <%= locals.general.payment || '' %>
                 </div>
             </div>
             <hr>
             <div class="f-row sides">
                 <div class="f-col side side-rp">
+                    <h3>Sprzedawca</h3>
                     <div class="field">
-                        Dane firmy: <%= locals.seller.companyInfo || '' %>
+                        <%- locals.seller.companyInfo || '' %>
                     </div>
                     <div class="field">
                         NIP/VAT: <%= locals.seller.nipVat || '' %>
@@ -114,8 +119,9 @@
                     </div>
                 </div>
                 <div class="f-col side">
+                    <h3>Nabywaca</h3>
                     <div class="field">
-                        Dane firmy: <%= locals.buyer.companyInfo || '' %>
+                        <%- locals.buyer.companyInfo || '' %>
                     </div>
                     <div class="field">
                         NIP/VAT: <%= locals.buyer.nipVat || '' %>

@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     try {
         const data = createInvoice(req.body)
         // NOTE: For testing a view uncomment line below
-        //return res.render("invoice", data)
+        // return res.render("invoice", data)
         const templatePath = path.join(__dirname, '../views/invoice.ejs');
         const html = await ejs.renderFile(templatePath, data)
 
@@ -59,14 +59,14 @@ const createInvoice = (body) => {
             body.general.payment,
         ),
         new Seller(
-            body.seller.companyInfo,
+            body.seller.companyInfo.replaceAll('\r\n', '<br>'),
             body.seller.nipVat,
             body.seller.account,
             body.seller.bankName,
             body.seller.swift
         ),
         new Buyer(
-            body.buyer.companyInfo,
+            body.buyer.companyInfo.replaceAll('\r\n', '<br>'),
             body.buyer.vipVat
         ),
         items,
