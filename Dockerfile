@@ -1,5 +1,6 @@
 FROM ghcr.io/puppeteer/puppeteer
 USER root
+WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
