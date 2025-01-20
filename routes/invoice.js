@@ -23,7 +23,9 @@ router.post('/', async (req, res) => {
         const templatePath = path.join(__dirname, '../views/invoice.ejs');
         const html = await ejs.renderFile(templatePath, data)
 
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            args: ['--no-sandbox']
+        });
         const page = await browser.newPage();
         await page.setContent(html);
         const pdfBuffer = await page.pdf({ format: 'A4', printBackground: true, });
