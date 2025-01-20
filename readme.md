@@ -1,6 +1,6 @@
 # Invoice Generator
 
-This repo contains a **basic** invoice generator written in JavaScript with ExpressJS framework.
+A **basic** invoice generation tool, developed using Express.js, designed to work exclusively in the Polish language. 
 
 #### Only support polish
 
